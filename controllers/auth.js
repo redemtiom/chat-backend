@@ -8,7 +8,7 @@ const createUser = async (req, res = response) => {
 
 	try {
 		const existEmail = await Usuario.findOne({ email });
-		console.log(email, existEmail);
+		console.log(email, existEmail, 'Auxiliooooooooo');
 		if (existEmail) {
 			//* this is a bad practice for secure pourposes
 			return res.status(400).json({
@@ -18,6 +18,7 @@ const createUser = async (req, res = response) => {
 		}
 
 		const user = Usuario(req.body);
+		console.log(user)
 
 		//* encript the password
 		const salt = bcrypt.genSaltSync();
@@ -30,7 +31,7 @@ const createUser = async (req, res = response) => {
 
 		res.json({
 			ok: true,
-			//msg: 'Crear usuario!!!!',
+			msg: 'Crear usuario!!!!',
 			user,
 			token,
 		});
@@ -94,7 +95,7 @@ const renewToken = async (req, res = response) => {
         if(!user){
             return res.status(404).json({
                 ok: false,
-                msg: 'User not found'
+                msg: 'User not found',
             })
         }
 
@@ -103,7 +104,8 @@ const renewToken = async (req, res = response) => {
         res.status(200).json({
             ok: true,
             user,
-            token
+            token,
+			msg: 'todo okas'
         })
     } catch (error) {
         console.log(error)

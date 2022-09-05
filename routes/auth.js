@@ -19,7 +19,7 @@ router.post(
 );
 
 router.post(
-	'/',
+	'/login',
 	[
 		check('email', 'email is obligatory').not().isEmpty(),
 		check('password', 'password is obligatory').not().isEmpty(),

@@ -8,7 +8,7 @@ const { dbConnection } = require('./database/config');
 dbConnection()
 
 app.use(express.json())
-app.use('/api/login', require('./routes/auth').router)
+app.use('/api', require('./routes/auth').router)
 
 //* Node Server Socket io
 const server = require('http').createServer(app);
